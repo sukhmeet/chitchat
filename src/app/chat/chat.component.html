@@ -1,0 +1,27 @@
+<div class="chat-wrapper">
+<p></p>
+<p></p>
+<h1>Hello {{ user }} </h1>
+
+<div id="chatroom" style="width:100%; height:50%; border:solid">
+<mat-list *ngIf="messages?.length > 0">
+  <mat-list-item *ngFor="let message of messages; let i = index">
+       <div *ngIf="i%2 === 0">
+          <font color="red">{{ message.sender }} </font>: {{ message.message }} 
+       </div>
+       <div *ngIf="i%2 === 1">
+          <font color="blue">{{ message.sender }} </font>: {{ message.message }} 
+       </div>
+    </mat-list-item>
+    <p #elemforscroll></p>
+</mat-list>
+</div>
+
+<div class="conversation-input">
+  <mat-divider></mat-divider>
+  <mat-form-field class="full-width">
+    <input matInput placeholder="{{inputPlaceHolder}}" name="text" [(ngModel)]="chattext" (keydown.enter)="sendMessage()">
+    <mat-icon matSuffix (click)="sendMessage()">send</mat-icon>
+  </mat-form-field>
+</div>
+</div>
